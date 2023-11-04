@@ -2,6 +2,8 @@ package com.example.moviecustomerapp.entity;
 
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,10 +21,11 @@ public class Actor {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long actorNo;
-
+	
+	@Column(nullable = false, unique = true)
 	private String actorName;
 	
-	@OneToMany(mappedBy = "movieNo")
+	@OneToMany(mappedBy = "movieNo",cascade=CascadeType.ALL)
 	List<Movie> movies;
 
 }	
