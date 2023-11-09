@@ -77,12 +77,12 @@ public class MovieActorController {
 
 	@GetMapping(value="/actor/{id}")
 	@ResponseBody
-	public ResponseEntity<Actor> getActor(@PathVariable(name = "actor_id", required = true) String actorId) {
+	public ResponseEntity<Actor> getActor(@PathVariable(name = "id", required = true) String actorId) {
 		Optional<Actor> actor = null;
 		try {
 			actor=actorRepository.findById(Long.parseLong(actorId));
 		} catch (Exception e) {
-
+				
 			e.printStackTrace();
 		}
 
